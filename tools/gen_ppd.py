@@ -169,10 +169,13 @@ def ppd(dpi):
     a('')
     a('*OpenUI *zePrintRate/Print Speed: PickOne')
     a('*OrderDependency: 20 AnySetup *zePrintRate')
-    a('*DefaultzePrintRate: 4')
+    # the 203 dpi vendor PPD offers whole speeds, the 300 dpi one also halves
+    speeds = [str(i) for i in range(1, 9)] if dpi == 203 else \
+             [f"{x / 2:g}" for x in range(2, 17)]
+    a('*DefaultzePrintRate: ' + ('4' if dpi == 203 else '3.5'))
     a('*zePrintRate Default/Printer Default: ""')
-    for i in range(1, 9):
-        a(f'*zePrintRate {i}/{i} inch/sec: ""')
+    for sp in speeds:
+        a(f'*zePrintRate {sp}/{sp} inch/sec: ""')
     a('*CloseUI: *zePrintRate')
     a('')
     a('*OpenUI *AutoDotted/Dotted Line: PickOne')

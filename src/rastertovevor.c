@@ -34,7 +34,9 @@
  *   REFERENCE <x>,<y>\r\n           origin offset in dots (option value in mm)
  *   GAP <g> mm,<o> mm\r\n           or BLINE <g> mm,<o> mm  or GAP 0 mm,0 mm
  *   DENSITY <d>\r\n                 only when Darkness != Default
- *   SPEED <s>\r\n                   only when zePrintRate != Default (1 -> 2)
+ *   SPEED <s>\r\n                   only when zePrintRate != Default (1 -> 2;
+ *                                   a choice of 3+ chars such as "3.5" is
+ *                                   sent as SPEED 3.5, like the 300 dpi build)
  *   SETC AUTODOTTED ON|OFF\r\n
  *   SETC PAUSEKEY ON\r\n
  *   SETC WATERMARK OFF\r\n
@@ -84,6 +86,8 @@ typedef struct
   int        gap_offset_mm;
   int        darkness;      /* -1 = printer default (omit DENSITY) */
   int        speed;         /* -1 = printer default (omit SPEED) */
+  double     speed_frac;    /* fractional speed ("3.5"), used when speed_is_frac */
+  int        speed_is_frac;
   int        autodotted;
 } job_options_t;
 
@@ -158,9 +162,18 @@ read_options(ppd_file_t *ppd, int num_options, cups_option_t *options,
   if ((v = option_value(ppd, num_options, options, "zePrintRate")) != NULL &&
       strcmp(v, "Default"))
   {
-    o->speed = atoi(v);
-    if (o->speed == 1)          /* the vendor filter clamps 1 ips to 2 */
-      o->speed = 2;
+    if (strlen(v) >= 3)         /* "3.5": the 300 dpi vendor build sends SPEED 3.5 */
+    {
+      o->speed_is_frac = 1;
+      o->speed_frac    = atof(v);
+      o->speed         = 0;
+    }
+    else
+    {
+      o->speed = atoi(v);
+      if (o->speed == 1)        /* the vendor filter clamps 1 ips to 2 */
+        o->speed = 2;
+    }
   }
 
   if ((v = option_value(ppd, num_options, options, "AutoDotted")) != NULL)
@@ -207,7 +220,9 @@ start_page(const cups_page_header2_t *h, const job_options_t *o,
 
   if (o->darkness >= 0)
     printf("DENSITY %d\r\n", o->darkness);
-  if (o->speed >= 0)
+  if (o->speed_is_frac)
+    printf("SPEED %.1f\r\n", o->speed_frac);
+  else if (o->speed >= 0)
     printf("SPEED %d\r\n", o->speed);
 
   fputs(o->autodotted ? "SETC AUTODOTTED ON\r\n" : "SETC AUTODOTTED OFF\r\n",

@@ -123,6 +123,10 @@ def test_options():
     rc, out, _ = run_filter(mkras(8, 4, 300, "toprow"), "AdjustHoriaontal=1 AdjustVertical=1",
                             ppd=PPD300)
     check("offsets -> REFERENCE 12,12 at 300 dpi", b"REFERENCE 12,12\r\n" in out)
+    rc, out, _ = run_filter(mkras(8, 4, 300, "toprow"), "zePrintRate=3.5", ppd=PPD300)
+    check("zePrintRate=3.5 -> SPEED 3.5 (300 dpi fractional)", b"SPEED 3.5\r\n" in out)
+    rc, out, _ = run_filter(mkras(8, 4, 300, "toprow"), ppd=PPD300)
+    check("300 dpi PPD default -> SPEED 3.5", b"SPEED 3.5\r\n" in out)
     rc, out, _ = run_filter(ras, "AutoDotted=1", ppd=PPD203)
     check("AutoDotted=1 -> SETC AUTODOTTED ON", b"SETC AUTODOTTED ON\r\n" in out)
 

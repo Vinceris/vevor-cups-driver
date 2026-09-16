@@ -52,6 +52,38 @@ run_case 203 4 2 corner "Rotate=2"
 run_case 203 4 2 corner "Rotate=3"
 run_case 203 8 4 toprow "Darkness=Default zePrintRate=1 zeMediaTracking=BLine GapOrMarkHeight=5"
 run_case 203 8 4 toprow "zeMediaTracking=Continuous AutoDotted=1 AdjustHoriaontal=-3 AdjustVertical=2"
-[ -x "$VENDOR300" ] && run_case 300 1200 1800 diag ""
+
+# The 300 dpi vendor filter only accepts queues whose URI names a Y428/Y468
+# model, so a temporary queue is created for it and removed afterwards
+# (lpadmin works for admin users without sudo on macOS).
+if [ -x "$VENDOR300" ] && [ -f "/Library/Printers/VevorPrinter300/PPDs/Vevor Label Printer 300.ppd" ]; then
+  Q300=TMP_VEVOR300_DIFFTEST
+  if lpadmin -p "$Q300" -E -v 'usb://VEVOR/Y428?serial=difftest' \
+       -P "/Library/Printers/VevorPrinter300/PPDs/Vevor Label Printer 300.ppd" \
+       -o printer-is-shared=false 2>/dev/null; then
+    run_case300() {  # w h pattern options
+      "$MKRAS" "$1" "$2" 300 "$3" > "$TMP/in.ras"
+      PPD="/etc/cups/ppd/$Q300.ppd" PRINTER="$Q300" "$VENDOR300" 1 u t 1 "$4" "$TMP/in.ras" > "$TMP/vendor.out" 2>/dev/null || true
+      PPD="/etc/cups/ppd/$Q300.ppd" "$OURS" 1 u t 1 "$4" "$TMP/in.ras" > "$TMP/ours.out" 2>/dev/null || true
+      if [ -s "$TMP/vendor.out" ] && cmp -s "$TMP/vendor.out" "$TMP/ours.out"; then
+        echo "  ok   300 dpi $1x$2 $3 [$4]"
+      else
+        echo "  DIFF 300 dpi $1x$2 $3 [$4]"; fail=1
+        cmp "$TMP/vendor.out" "$TMP/ours.out" || true
+      fi
+    }
+    run_case300 1200 1800 diag ""
+    run_case300 12 8 toprow ""
+    run_case300 4 2 corner "Rotate=1"
+    run_case300 4 2 corner "Rotate=2"
+    run_case300 4 2 corner "Rotate=3"
+    run_case300 8 4 toprow "Darkness=Default zePrintRate=1 zeMediaTracking=BLine GapOrMarkHeight=5 AdjustHoriaontal=-3 AdjustVertical=2"
+    run_case300 8 4 toprow "zeMediaTracking=Continuous AutoDotted=1 Darkness=15 zePrintRate=7.5"
+    run_case300 8 4 toprow "zePrintRate=2"
+    lpadmin -x "$Q300" 2>/dev/null || true
+  else
+    echo "  skip 300 dpi cases (could not create a temporary queue; run with sudo)"
+  fi
+fi
 
 [ $fail = 0 ] && echo "IDENTICAL to the vendor filter" || { echo "differences found"; exit 1; }

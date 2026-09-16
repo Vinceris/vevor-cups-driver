@@ -24,7 +24,7 @@ No auto-add daemon: add the queue once and it stays.
 
 | | |
 |---|---|
-| Filter output vs. vendor filter | matches the vendor's TSPL sequence, reconstructed instruction-by-instruction from the vendor binary (see below); 25 offline tests, plus a PDF → CUPS → TSPL pipeline test |
+| Filter output vs. vendor filter | **byte-for-byte identical** in 15 differential cases against both vendor builds (203 dpi and 300 dpi: full 4×6 page, all rotations, every option), see `tests/diff-vs-vendor.sh`; 27 offline tests plus a PDF → CUPS → TSPL pipeline test |
 | Hardware test on a Y486 | **pending** – please open an issue with your result |
 | macOS | 12+ (built with `-mmacosx-version-min=11`); developed on macOS 27 |
 | Linux | builds with `libcups2-dev` / `libcupsimage2-dev`; untested |
@@ -55,7 +55,7 @@ Options (`-o key=value`, also in the print dialog):
 | Option | Values | TSPL |
 |---|---|---|
 | `Darkness` | `Default`, `0`…`15` | `DENSITY n` (omitted for Default) |
-| `zePrintRate` | `Default`, `1`…`8` in/s | `SPEED n` (1 is sent as 2, like the vendor) |
+| `zePrintRate` | `Default`, `1`…`8` in/s (300 dpi PPD: also `1.5`…`7.5`) | `SPEED n` (1 is sent as 2; `3.5` is sent as `SPEED 3.5`, like the vendor) |
 | `zeMediaTracking` | `Gap`, `BLine`, `Continuous` | `GAP g mm,o mm` / `BLINE g mm,o mm` / `GAP 0 mm,0 mm` |
 | `GapOrMarkHeight`, `GapOrMarkOffset` | `0`…`10` mm | the `g` and `o` above |
 | `AdjustHoriaontal` (sic), `AdjustVertical` | `-20`…`20` mm | `REFERENCE x,y` in dots |
@@ -104,7 +104,11 @@ filter, on purpose:
 
 `tests/diff-vs-vendor.sh` runs both filters on the same rasters and
 compares the output byte-for-byte; it needs Rosetta 2 and the vendor
-package still installed.
+package still installed. Last run (macOS 27.0, vendor 1.5.8): 15/15 identical.
+
+One more difference: the vendor ships two binaries, one hard-wired to
+8 dots/mm and one to 12 dots/mm. This filter derives dots/mm from the
+job resolution, so a single binary serves both PPDs.
 
 ## Layout
 

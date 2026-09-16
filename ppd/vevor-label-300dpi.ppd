@@ -229,15 +229,22 @@
 
 *OpenUI *zePrintRate/Print Speed: PickOne
 *OrderDependency: 20 AnySetup *zePrintRate
-*DefaultzePrintRate: 4
+*DefaultzePrintRate: 3.5
 *zePrintRate Default/Printer Default: ""
 *zePrintRate 1/1 inch/sec: ""
+*zePrintRate 1.5/1.5 inch/sec: ""
 *zePrintRate 2/2 inch/sec: ""
+*zePrintRate 2.5/2.5 inch/sec: ""
 *zePrintRate 3/3 inch/sec: ""
+*zePrintRate 3.5/3.5 inch/sec: ""
 *zePrintRate 4/4 inch/sec: ""
+*zePrintRate 4.5/4.5 inch/sec: ""
 *zePrintRate 5/5 inch/sec: ""
+*zePrintRate 5.5/5.5 inch/sec: ""
 *zePrintRate 6/6 inch/sec: ""
+*zePrintRate 6.5/6.5 inch/sec: ""
 *zePrintRate 7/7 inch/sec: ""
+*zePrintRate 7.5/7.5 inch/sec: ""
 *zePrintRate 8/8 inch/sec: ""
 *CloseUI: *zePrintRate
 
