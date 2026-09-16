@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: make
+      - run: lipo -archs build/rastertovevor
+      - run: make test
+      - run: for p in ppd/*.ppd; do cupstestppd -W filters "$p"; done
+
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y libcups2-dev libcupsimage2-dev cups-client
+      - run: make
+      - run: make test

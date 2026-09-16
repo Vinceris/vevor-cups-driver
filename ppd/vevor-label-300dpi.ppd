@@ -1,0 +1,363 @@
+*PPD-Adobe: "4.3"
+*% rastertovevor - open-source driver for VEVOR Y486 / Y486BT label printers
+*% https://github.com/mattiacolombomc/vevor-cups-driver
+*% Licensed under the Apache License, Version 2.0
+*FormatVersion: "4.3"
+*FileVersion: "1.0"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "vevor300.ppd"
+*Manufacturer: "VEVOR"
+*Product: "(VEVOR Label Printer)"
+*cupsVersion: 2.2
+*cupsManualCopies: True
+*cupsModelNumber: 20
+*cupsFilter: "application/vnd.cups-raster 0 /Library/Printers/VevorOpen/Filter/rastertovevor"
+*ModelName: "VEVOR Label Printer 300 dpi Open"
+*ShortNickName: "VEVOR Label 300dpi"
+*NickName: "VEVOR Label Printer 300 dpi Open"
+*PSVersion: "(3010.000) 0"
+*LanguageLevel: "3"
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: False
+*Throughput: "1"
+*LandscapeOrientation: Plus90
+*TTRasterizer: Type42
+*HWMargins: 0 0 0 0
+*VariablePaperSize: True
+*MaxMediaWidth: "294"
+*MaxMediaHeight: "5670"
+*CustomPageSize True: "pop pop pop <</PageSize[5 -2 roll]/ImagingBBox null>>setpagedevice"
+*ParamCustomPageSize Width: 1 points 36 294
+*ParamCustomPageSize Height: 2 points 36 5670
+*ParamCustomPageSize WidthOffset: 3 points 0 0
+*ParamCustomPageSize HeightOffset: 4 points 0 0
+*ParamCustomPageSize Orientation: 5 int 0 0
+
+*OpenGroup: General/General
+
+*OpenUI *PageSize/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize: w283h425
+*PageSize w283h425/100 x 150 mm (4 x 6 in): "<</PageSize[283 425]/ImagingBBox null>>setpagedevice"
+*PageSize w283h283/100 x 100 mm: "<</PageSize[283 283]/ImagingBBox null>>setpagedevice"
+*PageSize w283h340/100 x 120 mm: "<</PageSize[283 340]/ImagingBBox null>>setpagedevice"
+*PageSize w283h482/100 x 170 mm: "<</PageSize[283 482]/ImagingBBox null>>setpagedevice"
+*PageSize w283h510/100 x 180 mm: "<</PageSize[283 510]/ImagingBBox null>>setpagedevice"
+*PageSize w283h567/100 x 200 mm: "<</PageSize[283 567]/ImagingBBox null>>setpagedevice"
+*PageSize w283h709/100 x 250 mm: "<</PageSize[283 709]/ImagingBBox null>>setpagedevice"
+*PageSize w283h142/100 x 50 mm: "<</PageSize[283 142]/ImagingBBox null>>setpagedevice"
+*PageSize w283h213/100 x 75 mm: "<</PageSize[283 213]/ImagingBBox null>>setpagedevice"
+*PageSize w227h283/80 x 100 mm: "<</PageSize[227 283]/ImagingBBox null>>setpagedevice"
+*PageSize w215h369/76 x 130 mm: "<</PageSize[215 369]/ImagingBBox null>>setpagedevice"
+*PageSize w170h113/60 x 40 mm: "<</PageSize[170 113]/ImagingBBox null>>setpagedevice"
+*PageSize w142h85/50 x 30 mm: "<</PageSize[142 85]/ImagingBBox null>>setpagedevice"
+*PageSize w113h85/40 x 30 mm: "<</PageSize[113 85]/ImagingBBox null>>setpagedevice"
+*PageSize w288h432/4 x 6 in (US): "<</PageSize[288 432]/ImagingBBox null>>setpagedevice"
+*PageSize w288h288/4 x 4 in: "<</PageSize[288 288]/ImagingBBox null>>setpagedevice"
+*PageSize w288h216/4 x 3 in: "<</PageSize[288 216]/ImagingBBox null>>setpagedevice"
+*PageSize w288h144/4 x 2 in: "<</PageSize[288 144]/ImagingBBox null>>setpagedevice"
+*PageSize w288h72/4 x 1 in: "<</PageSize[288 72]/ImagingBBox null>>setpagedevice"
+*PageSize w288h576/4 x 8 in: "<</PageSize[288 576]/ImagingBBox null>>setpagedevice"
+*PageSize w216h360/3 x 5 in: "<</PageSize[216 360]/ImagingBBox null>>setpagedevice"
+*PageSize w216h144/3 x 2 in: "<</PageSize[216 144]/ImagingBBox null>>setpagedevice"
+*PageSize w216h72/3 x 1 in: "<</PageSize[216 72]/ImagingBBox null>>setpagedevice"
+*PageSize w144h288/2 x 4 in: "<</PageSize[144 288]/ImagingBBox null>>setpagedevice"
+*PageSize w144h144/2 x 2 in: "<</PageSize[144 144]/ImagingBBox null>>setpagedevice"
+*PageSize w144h72/2 x 1 in: "<</PageSize[144 72]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion/Media Size: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: w283h425
+*PageRegion w283h425/100 x 150 mm (4 x 6 in): "<</PageSize[283 425]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h283/100 x 100 mm: "<</PageSize[283 283]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h340/100 x 120 mm: "<</PageSize[283 340]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h482/100 x 170 mm: "<</PageSize[283 482]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h510/100 x 180 mm: "<</PageSize[283 510]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h567/100 x 200 mm: "<</PageSize[283 567]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h709/100 x 250 mm: "<</PageSize[283 709]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h142/100 x 50 mm: "<</PageSize[283 142]/ImagingBBox null>>setpagedevice"
+*PageRegion w283h213/100 x 75 mm: "<</PageSize[283 213]/ImagingBBox null>>setpagedevice"
+*PageRegion w227h283/80 x 100 mm: "<</PageSize[227 283]/ImagingBBox null>>setpagedevice"
+*PageRegion w215h369/76 x 130 mm: "<</PageSize[215 369]/ImagingBBox null>>setpagedevice"
+*PageRegion w170h113/60 x 40 mm: "<</PageSize[170 113]/ImagingBBox null>>setpagedevice"
+*PageRegion w142h85/50 x 30 mm: "<</PageSize[142 85]/ImagingBBox null>>setpagedevice"
+*PageRegion w113h85/40 x 30 mm: "<</PageSize[113 85]/ImagingBBox null>>setpagedevice"
+*PageRegion w288h432/4 x 6 in (US): "<</PageSize[288 432]/ImagingBBox null>>setpagedevice"
+*PageRegion w288h288/4 x 4 in: "<</PageSize[288 288]/ImagingBBox null>>setpagedevice"
+*PageRegion w288h216/4 x 3 in: "<</PageSize[288 216]/ImagingBBox null>>setpagedevice"
+*PageRegion w288h144/4 x 2 in: "<</PageSize[288 144]/ImagingBBox null>>setpagedevice"
+*PageRegion w288h72/4 x 1 in: "<</PageSize[288 72]/ImagingBBox null>>setpagedevice"
+*PageRegion w288h576/4 x 8 in: "<</PageSize[288 576]/ImagingBBox null>>setpagedevice"
+*PageRegion w216h360/3 x 5 in: "<</PageSize[216 360]/ImagingBBox null>>setpagedevice"
+*PageRegion w216h144/3 x 2 in: "<</PageSize[216 144]/ImagingBBox null>>setpagedevice"
+*PageRegion w216h72/3 x 1 in: "<</PageSize[216 72]/ImagingBBox null>>setpagedevice"
+*PageRegion w144h288/2 x 4 in: "<</PageSize[144 288]/ImagingBBox null>>setpagedevice"
+*PageRegion w144h144/2 x 2 in: "<</PageSize[144 144]/ImagingBBox null>>setpagedevice"
+*PageRegion w144h72/2 x 1 in: "<</PageSize[144 72]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+
+*DefaultImageableArea: w283h425
+*ImageableArea w283h425/100 x 150 mm (4 x 6 in): "0 0 283 425"
+*ImageableArea w283h283/100 x 100 mm: "0 0 283 283"
+*ImageableArea w283h340/100 x 120 mm: "0 0 283 340"
+*ImageableArea w283h482/100 x 170 mm: "0 0 283 482"
+*ImageableArea w283h510/100 x 180 mm: "0 0 283 510"
+*ImageableArea w283h567/100 x 200 mm: "0 0 283 567"
+*ImageableArea w283h709/100 x 250 mm: "0 0 283 709"
+*ImageableArea w283h142/100 x 50 mm: "0 0 283 142"
+*ImageableArea w283h213/100 x 75 mm: "0 0 283 213"
+*ImageableArea w227h283/80 x 100 mm: "0 0 227 283"
+*ImageableArea w215h369/76 x 130 mm: "0 0 215 369"
+*ImageableArea w170h113/60 x 40 mm: "0 0 170 113"
+*ImageableArea w142h85/50 x 30 mm: "0 0 142 85"
+*ImageableArea w113h85/40 x 30 mm: "0 0 113 85"
+*ImageableArea w288h432/4 x 6 in (US): "0 0 288 432"
+*ImageableArea w288h288/4 x 4 in: "0 0 288 288"
+*ImageableArea w288h216/4 x 3 in: "0 0 288 216"
+*ImageableArea w288h144/4 x 2 in: "0 0 288 144"
+*ImageableArea w288h72/4 x 1 in: "0 0 288 72"
+*ImageableArea w288h576/4 x 8 in: "0 0 288 576"
+*ImageableArea w216h360/3 x 5 in: "0 0 216 360"
+*ImageableArea w216h144/3 x 2 in: "0 0 216 144"
+*ImageableArea w216h72/3 x 1 in: "0 0 216 72"
+*ImageableArea w144h288/2 x 4 in: "0 0 144 288"
+*ImageableArea w144h144/2 x 2 in: "0 0 144 144"
+*ImageableArea w144h72/2 x 1 in: "0 0 144 72"
+
+*DefaultPaperDimension: w283h425
+*PaperDimension w283h425/100 x 150 mm (4 x 6 in): "283 425"
+*PaperDimension w283h283/100 x 100 mm: "283 283"
+*PaperDimension w283h340/100 x 120 mm: "283 340"
+*PaperDimension w283h482/100 x 170 mm: "283 482"
+*PaperDimension w283h510/100 x 180 mm: "283 510"
+*PaperDimension w283h567/100 x 200 mm: "283 567"
+*PaperDimension w283h709/100 x 250 mm: "283 709"
+*PaperDimension w283h142/100 x 50 mm: "283 142"
+*PaperDimension w283h213/100 x 75 mm: "283 213"
+*PaperDimension w227h283/80 x 100 mm: "227 283"
+*PaperDimension w215h369/76 x 130 mm: "215 369"
+*PaperDimension w170h113/60 x 40 mm: "170 113"
+*PaperDimension w142h85/50 x 30 mm: "142 85"
+*PaperDimension w113h85/40 x 30 mm: "113 85"
+*PaperDimension w288h432/4 x 6 in (US): "288 432"
+*PaperDimension w288h288/4 x 4 in: "288 288"
+*PaperDimension w288h216/4 x 3 in: "288 216"
+*PaperDimension w288h144/4 x 2 in: "288 144"
+*PaperDimension w288h72/4 x 1 in: "288 72"
+*PaperDimension w288h576/4 x 8 in: "288 576"
+*PaperDimension w216h360/3 x 5 in: "216 360"
+*PaperDimension w216h144/3 x 2 in: "216 144"
+*PaperDimension w216h72/3 x 1 in: "216 72"
+*PaperDimension w144h288/2 x 4 in: "144 288"
+*PaperDimension w144h144/2 x 2 in: "144 144"
+*PaperDimension w144h72/2 x 1 in: "144 72"
+
+*OpenUI *Resolution/Resolution: PickOne
+*OrderDependency: 20 AnySetup *Resolution
+*DefaultResolution: 300dpi
+*Resolution 300dpi/300 dpi: "<</HWResolution[300 300]/cupsBitsPerColor 8/cupsRowCount 8/cupsRowFeed 0/cupsRowStep 0/cupsColorSpace 0>>setpagedevice"
+*CloseUI: *Resolution
+
+*CloseGroup: General
+
+*OpenGroup: PrinterSettings/Printer Settings
+
+*OpenUI *zeMediaTracking/Media Tracking: PickOne
+*OrderDependency: 20 AnySetup *zeMediaTracking
+*DefaultzeMediaTracking: Gap
+*zeMediaTracking Gap/Gap: ""
+*zeMediaTracking BLine/Black Line: ""
+*zeMediaTracking Continuous/Continuous: ""
+*CloseUI: *zeMediaTracking
+
+*OpenUI *GapOrMarkHeight/Gap or Mark Height: PickOne
+*OrderDependency: 20 AnySetup *GapOrMarkHeight
+*DefaultGapOrMarkHeight: 3
+*GapOrMarkHeight 0/0 mm: ""
+*GapOrMarkHeight 1/1 mm: ""
+*GapOrMarkHeight 2/2 mm: ""
+*GapOrMarkHeight 3/3 mm: ""
+*GapOrMarkHeight 4/4 mm: ""
+*GapOrMarkHeight 5/5 mm: ""
+*GapOrMarkHeight 6/6 mm: ""
+*GapOrMarkHeight 7/7 mm: ""
+*GapOrMarkHeight 8/8 mm: ""
+*GapOrMarkHeight 9/9 mm: ""
+*GapOrMarkHeight 10/10 mm: ""
+*CloseUI: *GapOrMarkHeight
+
+*OpenUI *GapOrMarkOffset/Gap or Mark Offset: PickOne
+*OrderDependency: 20 AnySetup *GapOrMarkOffset
+*DefaultGapOrMarkOffset: 0
+*GapOrMarkOffset 0/0 mm: ""
+*GapOrMarkOffset 1/1 mm: ""
+*GapOrMarkOffset 2/2 mm: ""
+*GapOrMarkOffset 3/3 mm: ""
+*GapOrMarkOffset 4/4 mm: ""
+*GapOrMarkOffset 5/5 mm: ""
+*GapOrMarkOffset 6/6 mm: ""
+*GapOrMarkOffset 7/7 mm: ""
+*GapOrMarkOffset 8/8 mm: ""
+*GapOrMarkOffset 9/9 mm: ""
+*GapOrMarkOffset 10/10 mm: ""
+*CloseUI: *GapOrMarkOffset
+
+*OpenUI *Darkness/Darkness: PickOne
+*OrderDependency: 20 AnySetup *Darkness
+*DefaultDarkness: 8
+*Darkness Default/Printer Default: ""
+*Darkness 0/0: ""
+*Darkness 1/1: ""
+*Darkness 2/2: ""
+*Darkness 3/3: ""
+*Darkness 4/4: ""
+*Darkness 5/5: ""
+*Darkness 6/6: ""
+*Darkness 7/7: ""
+*Darkness 8/8: ""
+*Darkness 9/9: ""
+*Darkness 10/10: ""
+*Darkness 11/11: ""
+*Darkness 12/12: ""
+*Darkness 13/13: ""
+*Darkness 14/14: ""
+*Darkness 15/15: ""
+*CloseUI: *Darkness
+
+*OpenUI *zePrintRate/Print Speed: PickOne
+*OrderDependency: 20 AnySetup *zePrintRate
+*DefaultzePrintRate: 4
+*zePrintRate Default/Printer Default: ""
+*zePrintRate 1/1 inch/sec: ""
+*zePrintRate 2/2 inch/sec: ""
+*zePrintRate 3/3 inch/sec: ""
+*zePrintRate 4/4 inch/sec: ""
+*zePrintRate 5/5 inch/sec: ""
+*zePrintRate 6/6 inch/sec: ""
+*zePrintRate 7/7 inch/sec: ""
+*zePrintRate 8/8 inch/sec: ""
+*CloseUI: *zePrintRate
+
+*OpenUI *AutoDotted/Dotted Line: PickOne
+*OrderDependency: 20 AnySetup *AutoDotted
+*DefaultAutoDotted: 0
+*AutoDotted 0/Off: ""
+*AutoDotted 1/On: ""
+*CloseUI: *AutoDotted
+
+*CloseGroup: PrinterSettings
+
+*OpenGroup: PageSet/Page Options
+
+*OpenUI *Rotate/Rotate: PickOne
+*OrderDependency: 30 AnySetup *Rotate
+*DefaultRotate: 0
+*Rotate 0/0 degrees: ""
+*Rotate 1/180 degrees: ""
+*Rotate 2/90 degrees: ""
+*Rotate 3/270 degrees: ""
+*CloseUI: *Rotate
+
+*OpenUI *AdjustHoriaontal/Horizontal Offset: PickOne
+*OrderDependency: 30 AnySetup *AdjustHoriaontal
+*DefaultAdjustHoriaontal: 0
+*AdjustHoriaontal -20/-20 mm: ""
+*AdjustHoriaontal -19/-19 mm: ""
+*AdjustHoriaontal -18/-18 mm: ""
+*AdjustHoriaontal -17/-17 mm: ""
+*AdjustHoriaontal -16/-16 mm: ""
+*AdjustHoriaontal -15/-15 mm: ""
+*AdjustHoriaontal -14/-14 mm: ""
+*AdjustHoriaontal -13/-13 mm: ""
+*AdjustHoriaontal -12/-12 mm: ""
+*AdjustHoriaontal -11/-11 mm: ""
+*AdjustHoriaontal -10/-10 mm: ""
+*AdjustHoriaontal -9/-9 mm: ""
+*AdjustHoriaontal -8/-8 mm: ""
+*AdjustHoriaontal -7/-7 mm: ""
+*AdjustHoriaontal -6/-6 mm: ""
+*AdjustHoriaontal -5/-5 mm: ""
+*AdjustHoriaontal -4/-4 mm: ""
+*AdjustHoriaontal -3/-3 mm: ""
+*AdjustHoriaontal -2/-2 mm: ""
+*AdjustHoriaontal -1/-1 mm: ""
+*AdjustHoriaontal 0/0 mm: ""
+*AdjustHoriaontal 1/1 mm: ""
+*AdjustHoriaontal 2/2 mm: ""
+*AdjustHoriaontal 3/3 mm: ""
+*AdjustHoriaontal 4/4 mm: ""
+*AdjustHoriaontal 5/5 mm: ""
+*AdjustHoriaontal 6/6 mm: ""
+*AdjustHoriaontal 7/7 mm: ""
+*AdjustHoriaontal 8/8 mm: ""
+*AdjustHoriaontal 9/9 mm: ""
+*AdjustHoriaontal 10/10 mm: ""
+*AdjustHoriaontal 11/11 mm: ""
+*AdjustHoriaontal 12/12 mm: ""
+*AdjustHoriaontal 13/13 mm: ""
+*AdjustHoriaontal 14/14 mm: ""
+*AdjustHoriaontal 15/15 mm: ""
+*AdjustHoriaontal 16/16 mm: ""
+*AdjustHoriaontal 17/17 mm: ""
+*AdjustHoriaontal 18/18 mm: ""
+*AdjustHoriaontal 19/19 mm: ""
+*AdjustHoriaontal 20/20 mm: ""
+*CloseUI: *AdjustHoriaontal
+
+*OpenUI *AdjustVertical/Vertical Offset: PickOne
+*OrderDependency: 30 AnySetup *AdjustVertical
+*DefaultAdjustVertical: 0
+*AdjustVertical -20/-20 mm: ""
+*AdjustVertical -19/-19 mm: ""
+*AdjustVertical -18/-18 mm: ""
+*AdjustVertical -17/-17 mm: ""
+*AdjustVertical -16/-16 mm: ""
+*AdjustVertical -15/-15 mm: ""
+*AdjustVertical -14/-14 mm: ""
+*AdjustVertical -13/-13 mm: ""
+*AdjustVertical -12/-12 mm: ""
+*AdjustVertical -11/-11 mm: ""
+*AdjustVertical -10/-10 mm: ""
+*AdjustVertical -9/-9 mm: ""
+*AdjustVertical -8/-8 mm: ""
+*AdjustVertical -7/-7 mm: ""
+*AdjustVertical -6/-6 mm: ""
+*AdjustVertical -5/-5 mm: ""
+*AdjustVertical -4/-4 mm: ""
+*AdjustVertical -3/-3 mm: ""
+*AdjustVertical -2/-2 mm: ""
+*AdjustVertical -1/-1 mm: ""
+*AdjustVertical 0/0 mm: ""
+*AdjustVertical 1/1 mm: ""
+*AdjustVertical 2/2 mm: ""
+*AdjustVertical 3/3 mm: ""
+*AdjustVertical 4/4 mm: ""
+*AdjustVertical 5/5 mm: ""
+*AdjustVertical 6/6 mm: ""
+*AdjustVertical 7/7 mm: ""
+*AdjustVertical 8/8 mm: ""
+*AdjustVertical 9/9 mm: ""
+*AdjustVertical 10/10 mm: ""
+*AdjustVertical 11/11 mm: ""
+*AdjustVertical 12/12 mm: ""
+*AdjustVertical 13/13 mm: ""
+*AdjustVertical 14/14 mm: ""
+*AdjustVertical 15/15 mm: ""
+*AdjustVertical 16/16 mm: ""
+*AdjustVertical 17/17 mm: ""
+*AdjustVertical 18/18 mm: ""
+*AdjustVertical 19/19 mm: ""
+*AdjustVertical 20/20 mm: ""
+*CloseUI: *AdjustVertical
+
+*CloseGroup: PageSet
+
+*DefaultFont: Courier
+*Font Courier: Standard "(1.05)" Standard ROM
+*Font Helvetica: Standard "(1.05)" Standard ROM
+*Font Times-Roman: Standard "(1.05)" Standard ROM
+*% dots per mm at this resolution: 12
+*% End of PPD
