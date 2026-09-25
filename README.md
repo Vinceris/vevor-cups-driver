@@ -26,8 +26,25 @@ No auto-add daemon: add the queue once and it stays.
 |---|---|
 | Filter output vs. vendor filter | **byte-for-byte identical** in 15 differential cases against both vendor builds (203 dpi and 300 dpi: full 4×6 page, all rotations, every option), see `tests/diff-vs-vendor.sh`; 27 offline tests plus a PDF → CUPS → TSPL pipeline test |
 | Hardware test on a Y486 | **pending** – please open an issue with your result |
+| Hardware test on an ORGSTA T001Plus | **OK** (Mac mini M2, macOS 27.0, USB, 4×6 labels) – see [Other printers](#other-printers-on-the-same-oem-engine) |
 | macOS | 12+ (built with `-mmacosx-version-min=11`); developed on macOS 27 |
 | Linux | builds with `libcups2-dev` / `libcupsimage2-dev`; untested |
+
+## Other printers on the same OEM engine
+
+The same defect exists in other vendors' macOS drivers built on the Shenzhen
+Weida ("Snail") toolchain: the `rastertosnail*-macarm64` filters in their
+packages are the x86_64 binaries renamed, so they also die without Rosetta.
+This filter drives them unchanged; only the PPD identity has to match the
+printer's USB device id so macOS picks it up automatically.
+
+| Printer | Vendor package | Status |
+|---|---|---|
+| ORGSTA T001Plus (203 dpi, `MFG:ORGSTA;MDL:T001Plus`, TSPL2) | `prt.orgsta.drv` 3.13.32 | **works** – PPD, signed/notarized .pkg installer and uninstaller at [Vinceris/orgsta-t001plus-macos](https://github.com/Vinceris/orgsta-t001plus-macos) |
+
+To adapt to another model: copy `ppd/vevor-label-203dpi.ppd`, change
+`*Manufacturer`, `*ModelName`, `*NickName` and add a `*1284DeviceID` line
+with the `MFG:`/`MDL:` values that `lpinfo -l -v` reports for your printer.
 
 ## Install (macOS)
 
