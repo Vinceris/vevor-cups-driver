@@ -40,7 +40,7 @@ printer's USB device id so macOS picks it up automatically.
 
 | Printer | Vendor package | Status |
 |---|---|---|
-| ORGSTA T001Plus (203 dpi, `MFG:ORGSTA;MDL:T001Plus`, TSPL2) | `prt.orgsta.drv` 3.13.32 | **works** – PPD, signed/notarized .pkg installer and uninstaller at [Vinceris/orgsta-t001plus-macos](https://github.com/Vinceris/orgsta-t001plus-macos) |
+| ORGSTA T001Plus (203 dpi, `MFG:ORGSTA;MDL:T001Plus`, TSPL2) | `prt.orgsta.drv` 3.13.32 | **works** – PPD, signed/notarized .pkg installer and uninstaller at [nostoi-labs/orgsta-t001plus-macos](https://github.com/nostoi-labs/orgsta-t001plus-macos) |
 
 To adapt to another model: copy `ppd/vevor-label-203dpi.ppd`, change
 `*Manufacturer`, `*ModelName`, `*NickName` and add a `*1284DeviceID` line
